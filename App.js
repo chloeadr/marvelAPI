@@ -1,13 +1,24 @@
-import { StatusBar } from 'expo-status-bar';
+import 'react-native-gesture-handler';
+import { NavigationContainer } from '@react-navigation/native';
+import { createStackNavigator } from '@react-navigation/stack';
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import { StyleSheet } from 'react-native';
+import HomeScreen from './components/HomeScreen';
+import SeriesScreen from './components/SeriesScreen';
+import CharacterScreen from './components/CharacterScreen';
 
 export default function App() {
+
+  const Stack = createStackNavigator();
+
   return (
-    <View style={styles.container}>
-      <Text>Open up App.js to start working on your app!</Text>
-      <StatusBar style="auto" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Home">
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="Series" component={SeriesScreen} />
+        <Stack.Screen name="Character" component={CharacterScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
 
